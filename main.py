@@ -1,14 +1,23 @@
 import pygame
 from pygame.locals import *
 
+size = width, height = (800, 800)
+road_w = int(width / 1.6)
 
+# initialis e pygame
 pygame.init()
 run = True
-screen = pygame.display.set_mode((800, 750))
+# set window size
+screen = pygame.display.set_mode(size)
 # set title of window
 pygame.display.set_caption("Dante Car Dodger")
 # set background colour
 screen.fill((60, 220, 0))
+
+# display graphics
+pygame.draw.rect(screen, (50, 50, 50), (width / 2 - road_w / 2, 0, road_w, height))
+
+# apply changes
 pygame.display.update()
 
 while run:
