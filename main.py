@@ -31,6 +31,11 @@ enemy_loc.center = width / 2 + road_w / 4, height * 0.2
 
 # game loop
 while run:
+    # animate ememy car
+    enemy_loc[1] += 1
+    if enemy_loc[1] > height:
+        enemy_loc[1] = -200
+
     for event in pygame.event.get():
         if event.type == QUIT:
             run = False
