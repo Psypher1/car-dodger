@@ -15,23 +15,6 @@ pygame.display.set_caption("Dante Car Dodger")
 # set background colour
 screen.fill((60, 220, 0))
 
-# display graphics
-pygame.draw.rect(screen, (50, 50, 50), (width / 2 - road_w / 2, 0, road_w, height))
-pygame.draw.rect(
-    screen, (255, 255, 255), (width / 2 - roadmark_w / 2, 0, roadmark_w, height)
-)
-
-pygame.draw.rect(
-    screen,
-    (255, 245, 40),
-    (width / 2 - road_w / 2 + roadmark_w * 2, 0, roadmark_w, height),
-)
-pygame.draw.rect(
-    screen,
-    (255, 245, 40),
-    (width / 2 + road_w / 2 - roadmark_w * 3, 0, roadmark_w, height),
-)
-
 # apply changes
 pygame.display.update()
 
@@ -56,6 +39,26 @@ while run:
                 car_loc = car_loc.move([-int(road_w / 2), 0])
             if event.key in [K_d, K_RIGHT]:
                 car_loc = car_loc.move([int(road_w / 2), 0])
+
+    # display graphics
+    ## road
+    pygame.draw.rect(screen, (50, 50, 50), (width / 2 - road_w / 2, 0, road_w, height))
+
+    ## center line
+    pygame.draw.rect(
+        screen, (255, 255, 255), (width / 2 - roadmark_w / 2, 0, roadmark_w, height)
+    )
+
+    pygame.draw.rect(
+        screen,
+        (255, 245, 40),
+        (width / 2 - road_w / 2 + roadmark_w * 2, 0, roadmark_w, height),
+    )
+    pygame.draw.rect(
+        screen,
+        (255, 245, 40),
+        (width / 2 + road_w / 2 - roadmark_w * 3, 0, roadmark_w, height),
+    )
 
     screen.blit(car, car_loc)
     screen.blit(enemy, enemy_loc)
