@@ -1,9 +1,12 @@
 import pygame
 from pygame.locals import *
+import random
 
 size = width, height = (800, 750)
 road_w = int(width / 1.6)
 roadmark_w = int(width / 80)
+left_lane = width / 2 - road_w / 4
+right_lane = width / 2 + road_w / 4
 
 # initialis e pygame
 pygame.init()
@@ -22,19 +25,23 @@ pygame.display.update()
 ## player car
 car = pygame.image.load("./assets/car.png")
 car_loc = car.get_rect()
-car_loc.center = width / 2 - road_w / 4, height * 0.8
+car_loc.center = left_lane, height * 0.8
 
 ## enemy car
 enemy = pygame.image.load("./assets/enemy.png")
 enemy_loc = enemy.get_rect()
-enemy_loc.center = width / 2 + road_w / 4, height * 0.2
+enemy_loc.center = right_lane, height * 0.2
 
 # game loop
 while run:
     # animate ememy car
     enemy_loc[1] += 1
     if enemy_loc[1] > height:
-        enemy_loc[1] = -200
+        # enemy_loc[1] = -200
+        if random.randint(0, 1) == 0:
+            enemy_loc.center = left_lane, -200
+        else:
+            enemy_loc.center = right_lane, -200
 
     for event in pygame.event.get():
         if event.type == QUIT:
