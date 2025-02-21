@@ -51,6 +51,11 @@ while run:
     for event in pygame.event.get():
         if event.type == QUIT:
             run = False
+        if event.type == KEYDOWN:
+            if event.key in [K_a, K_LEFT]:
+                car_loc = car_loc.move([-int(road_w / 2), 0])
+            if event.key in [K_d, K_RIGHT]:
+                car_loc = car_loc.move([int(road_w / 2), 0])
 
     screen.blit(car, car_loc)
     screen.blit(enemy, enemy_loc)
