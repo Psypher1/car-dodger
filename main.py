@@ -8,7 +8,7 @@ roadmark_w = int(width / 80)
 left_lane = width / 2 - road_w / 4
 right_lane = width / 2 + road_w / 4
 
-# initialis e pygame
+# initialise pygame
 pygame.init()
 run = True
 # set window size
